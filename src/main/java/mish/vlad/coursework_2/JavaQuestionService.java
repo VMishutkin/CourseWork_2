@@ -9,7 +9,7 @@ import java.util.*;
 public class JavaQuestionService implements QuestionService {
     private List<Question> examQuestions;
 
-    public JavaQuestionService(List<Question> examQuestions) {
+    public JavaQuestionService() {
         this.examQuestions = new ArrayList<Question>();
     }
 
@@ -18,7 +18,7 @@ public class JavaQuestionService implements QuestionService {
         if (question == null || answer == null) {
             throw new AddNullException();
         }
-        if (examQuestions.contains(question)) {
+        if (examQuestions.contains(new Question(question, answer))) {
             throw new ItemAlreadyAddedException();
         }
         examQuestions.add(new Question(question, answer));
@@ -30,7 +30,7 @@ public class JavaQuestionService implements QuestionService {
         if (question == null) {
             throw new AddNullException();
         }
-        if (examQuestions.contains(question.getQuestion())) {
+        if (examQuestions.contains(question)) {
             throw new ItemAlreadyAddedException();
         }
         examQuestions.add(question);
@@ -50,6 +50,9 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Collection<Question> getAll() {
+        if (examQuestions == null) {
+            throw new ItemNotFoundException();
+        }
         return examQuestions;
     }
 

@@ -6,12 +6,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+@RequestMapping("/exam/get")
 
 @RestController
 public class ExamController {
     ExaminerService examSerivce;
-    @GetMapping("/exam/get")
+
+    public ExamController(ExaminerService examSerivce) {
+        this.examSerivce = examSerivce;
+    }
+
+    @GetMapping
     public Collection<Question> getQuestions(@RequestParam("amount") int amount) {
         return examSerivce.getQuestions(amount);
     }
+
+
 }

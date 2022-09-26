@@ -24,9 +24,13 @@ public class JavaQuestionController {
     public Question remove(@RequestParam("question")String question,@RequestParam("answer") String answer){
         return javaQuestionService.remove(new Question(question, answer));
     }
-    @GetMapping("/find")
-    public Collection<Question> find(){
+@GetMapping
+    public Collection<Question> getQuestions(){
         return javaQuestionService.getAll();
+    }
+    @GetMapping("/test")
+    public Question test(){
+        return javaQuestionService.getRandomQuestion();
     }
 
 

@@ -33,9 +33,10 @@ public class ExaminerServiceImpl implements ExaminerService {
                 questionList.add(question);
                 qCounter++;
             }
-        } while (qCounter <= amount);
+        } while (qCounter < amount);
         System.out.println(questionList);
         return questionList;
+
     }
 
 }
