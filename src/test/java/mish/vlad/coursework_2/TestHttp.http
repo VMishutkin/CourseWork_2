@@ -1,0 +1,32 @@
+GET http://localhost:8080/exam/java/add?question=КтоПоживаетНаДнеОкеана&answer=ГубкаБоб
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/java/add?question=СколькоДнейВГоду&answer=365
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/java/add?question=ФамилияПутина&answer=Путин
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/java
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/java/remove?question=ФамилияПутина&answer=Путин
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/java/add?question=РазобралиВсехДевокГде&answer=ВГороде
+Accept: application/json
+
+###
+GET http://localhost:8080/exam/get?amount=2
+Accept: application/json
+
+###
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
