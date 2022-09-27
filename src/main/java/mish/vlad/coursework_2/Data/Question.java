@@ -1,4 +1,4 @@
-package mish.vlad.coursework_2;
+package mish.vlad.coursework_2.Data;
 
 public class Question {
     private String question;

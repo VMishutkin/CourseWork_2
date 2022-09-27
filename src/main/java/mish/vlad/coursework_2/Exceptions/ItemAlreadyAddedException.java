@@ -1,4 +1,4 @@
-package mish.vlad.coursework_2;
+package mish.vlad.coursework_2.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

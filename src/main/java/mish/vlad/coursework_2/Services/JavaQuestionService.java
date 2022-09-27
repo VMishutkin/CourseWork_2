@@ -1,28 +1,26 @@
-package mish.vlad.coursework_2;
+package mish.vlad.coursework_2.Services;
 
-import org.springframework.core.annotation.AnnotationUtils;
+import mish.vlad.coursework_2.Exceptions.AddNullException;
+import mish.vlad.coursework_2.Exceptions.ItemAlreadyAddedException;
+import mish.vlad.coursework_2.Exceptions.ItemNotFoundException;
+import mish.vlad.coursework_2.Data.Question;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    private List<Question> examQuestions;
+    private final List<Question> examQuestions;
+    private final Random random;
 
     public JavaQuestionService() {
         this.examQuestions = new ArrayList<Question>();
+        this.random = new Random();
     }
 
     @Override
     public Question add(String question, String answer) {
-        if (question == null || answer == null) {
-            throw new AddNullException();
-        }
-        if (examQuestions.contains(new Question(question, answer))) {
-            throw new ItemAlreadyAddedException();
-        }
-        examQuestions.add(new Question(question, answer));
-        return new Question(question, answer);
+        return add(new Question(question, answer));
     }
 
     @Override
@@ -58,7 +56,7 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-        Random random = new Random();
+
         return examQuestions.get(random.nextInt(examQuestions.size()));
 
     }

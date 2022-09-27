@@ -1,5 +1,7 @@
-package mish.vlad.coursework_2;
+package mish.vlad.coursework_2.Services;
 
+import mish.vlad.coursework_2.Exceptions.BadAmountException;
+import mish.vlad.coursework_2.Data.Question;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    private JavaQuestionService questionService;
+    private final JavaQuestionService questionService;
 
     public ExaminerServiceImpl(JavaQuestionService questionService) {
         this.questionService = questionService;
@@ -16,15 +18,13 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestions(int amount) {
-        if (amount > questionService.getAll().size()) {
+        if (amount > questionService.getAll().size() || amount< 1) {
             throw new BadAmountException();
         }
         if (amount == questionService.getAll().size()) {
             return questionService.getAll();
         }
-        if (amount < 1) {
-            throw new NullPointerException();
-        }
+
         List<Question> questionList = new ArrayList<Question>();
         int qCounter = 0;
         do {
@@ -34,7 +34,7 @@ public class ExaminerServiceImpl implements ExaminerService {
                 qCounter++;
             }
         } while (qCounter < amount);
-        System.out.println(questionList);
+
         return questionList;
 
     }

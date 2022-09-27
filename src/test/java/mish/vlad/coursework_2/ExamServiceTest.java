@@ -1,5 +1,9 @@
 package mish.vlad.coursework_2;
 
+import mish.vlad.coursework_2.Data.Question;
+import mish.vlad.coursework_2.Exceptions.BadAmountException;
+import mish.vlad.coursework_2.Services.ExaminerServiceImpl;
+import mish.vlad.coursework_2.Services.JavaQuestionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,9 +33,8 @@ public class ExamServiceTest {
         questions.add(new Question("What is the capital of the great Britain", "London"));
 
         Mockito.when(questionService.getAll()).thenReturn(questions);
-
         Assertions.assertEquals(questions, examinerService.getQuestions(4));
-        Assertions.assertThrows(NullPointerException.class, () -> examinerService.getQuestions(0));
+
         Assertions.assertThrows(BadAmountException.class, () -> examinerService.getQuestions(8));
 
 

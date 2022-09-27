@@ -1,23 +1,24 @@
-package mish.vlad.coursework_2;
+package mish.vlad.coursework_2.Controllers;
 
+import mish.vlad.coursework_2.Services.JavaQuestionService;
+import mish.vlad.coursework_2.Data.Question;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
-import java.util.List;
 
-@RequestMapping("/exam/java")
+@RequestMapping("/java")
 @RestController
 public class JavaQuestionController {
-    JavaQuestionService javaQuestionService;
+    private final JavaQuestionService javaQuestionService;
 
     public JavaQuestionController(JavaQuestionService javaQuestionService) {
         this.javaQuestionService = javaQuestionService;
     }
     @GetMapping("/add")
-    public Question add(@RequestParam("question") String question,@RequestParam("answer") String answer){
+    public Question add(@RequestParam("question") String question, @RequestParam("answer") String answer){
         return javaQuestionService.add(question,answer);
     }
     @GetMapping("/remove")
